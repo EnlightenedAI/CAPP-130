@@ -1,0 +1,69 @@
+﻿[
+  {
+    "id": 0,
+    "label_chinese_name": "数据收集",
+    "label_english_name": "First Party Collection Information"
+  },
+  {
+    "id": 1,
+    "label_chinese_name":"权限获取",
+    "label_english_name": "Permission Acquisition"
+
+  },
+  {
+    "id": 2,
+    "label_chinese_name":"共享、委托、转让、公开（披露）",
+    "label_english_name":"Third Party Sharing/ Disclosure"
+
+  },
+  {
+    "id": 3,
+    "label_chinese_name": "使用",
+    "label_english_name":"Usage"
+  },
+  {
+    "id": 4,
+    "label_chinese_name": "存储方式",
+    "label_english_name":"Data Retention"
+  },
+  {
+    "id": 5,
+    "label_chinese_name": "安全措施",
+    "label_english_name":"Data Security"
+  },
+  {
+    "id": 6,
+    "label_chinese_name": "特殊人群",
+    "label_english_name":"Specific Audiences"
+  },
+  {
+    "id": 7,
+    "label_chinese_name": "数据、权限管理",
+    "label_english_name":"Edit/Control"
+  },
+  {
+    "id": 8,
+    "label_chinese_name": "联系方式",
+    "label_english_name":"Contact Information"
+  },
+  {
+    "id": 9,
+    "label_chinese_name": "隐私政策的授权、修改与变更",
+    "label_english_name":"Policy Change"
+  },
+  {
+    "id": 10,
+    "label_chinese_name": "停止运营",
+    "label_english_name":"Cessation of Operations"
+  },
+  {
+    "id": 11,
+   "label_chinese_name":"摘要",
+    "label_english_name":"Important"
+  },
+  {
+    "id": 12,
+    "label_chinese_name": "潜在风险",
+    "label_english_name":"Risk"
+  }
+]
