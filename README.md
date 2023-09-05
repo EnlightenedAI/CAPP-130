@@ -99,7 +99,7 @@ Table 3: Evaluation Metrics with F1 for Classification Models.
 |PERT	|0.801	 |0.812	| 0.895    |0.897    |**0.922**	|**0.716**|
 |ERNIE	|0.807	 |0.821	| 0.895    |0.896    |0.921	| 0.702|
 
-**(New)** We will upload all model parameters to [here](https://huggingface.co/EnlightenedAI/TCSI_pp_zh/).
+**(New)** We will upload all model parameters to [here](https://huggingface.co/EnlightenedAI/TCSI_pp_zh/tree/main).
 
 ### Rewritten Sentences
 A generative model is used to rewrite these sentences clearly and concisely for the understanding of the general public, with potentially risky sentences emphasized.
@@ -127,7 +127,7 @@ Table 4: Evaluation metrics for the rewrite models.
 | Bert2gpt     | 0.751	|0.574	| 0.720    | 0.872    | -4.964     | 0.764     |
 | ERNIE2gpt    | 0.623	|0.406	| 0.581    | 0.809    | -5.716     | 0.715     |
 
-**(New)** We will upload all model parameters to [here](https://huggingface.co/EnlightenedAI/TCSI_pp_zh/).
+**(New)** We will upload all model parameters to [here](https://huggingface.co/EnlightenedAI/TCSI_pp_zh/tree/main).
 
 ## Chinese application privacy policy summary tool (TCSI-pp-zh)
 
