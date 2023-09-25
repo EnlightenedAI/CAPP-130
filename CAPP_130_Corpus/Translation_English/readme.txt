@@ -1,0 +1,1 @@
+The English version of this dataset was obtained by translating CAPP-130 through the Google Translate API. In addition, we are creating a dedicated English dataset for English privacy policies, please stay tuned.
