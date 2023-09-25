@@ -5,7 +5,7 @@ A privacy policy serves as an online internet protocol crafted by service provid
 However, these privacy policies are often filled with technobabble and legalese, making them 'incomprehensible'.
 As a result, users often agree to all terms unknowingly, even some terms may conflict with the law, thereby posing a considerable risk to personal privacy information.
 To tackle these challenges, we introduce a fine-grained CAPP-130 corpus and a TCSI-pp framework. 
-CAPP-130 contains $130$ Chinese privacy policies from popular applications that have been carefully annotated and interpreted by legal experts, resulting in $52,489$ annotations and $19,570$ rewritten sentences.
+CAPP-130 contains $130$ Chinese privacy policies from popular applications that have been carefully annotated and interpreted by legal experts, resulting in $52,489$ annotations and $20,555$ rewritten sentences.
 TCSI-pp first extracts sentences related to the topic specified by users and then uses a generative model to rewrite the sentences into comprehensible summarization. Built upon TSCI-pp, we construct a summarization tool TSCI-pp-zh by selecting RoBERTa from six classification models for sentence extraction and selecting mT5 from five generative models for sentence rewriting.
 
 ## Environment
