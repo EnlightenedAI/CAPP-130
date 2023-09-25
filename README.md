@@ -50,8 +50,8 @@ Table 2: The pre-sliced data from CAPP-130 is used to train TCSI-pp.
 |----------------------------------|---------------|--------------------|--------------|
 | important_identification_dataset | 27222         | 5833               | 5834         |
 | risk_identification_dataset      | 14338         | 3083               | 3084         |
-| topic                            | 14190         | 3043               | 3035         |
-| rewritten                        | 15656         | 1957               | 1957         |
+| topic_identification_dataset     | 14190         | 3043               | 3035         |
+| rewritten_sentences              | 15656         | 1957               | 1957         |
 
 
 ## Topic-Controlled Framework for Summarization and Interpretation of Privacy Policy (TCSI-pp)
