@@ -150,6 +150,18 @@ Figure 1 displays the summarization of GPT-4 and TCSI-pp-zh in a privacy policy,
 Figure 1: Summarization of GPT-4 and TCSI-pp-zh.
 ![TCSI-pp-zh.png](images/TCSI_pp_zh.png)
 
+## citation
+If you use the data or code of this project, or if our work is helpful to you, please state the citation
+```
+@inproceedings{
+anonymous2023capp,
+title={{CAPP}-130 : A Dataset of Chinese Application Privacy Policy Summarization and Interpretations.},
+author={Anonymous},
+booktitle={Advances in Neural Information Processing Systems},
+year={2023},
+url={https://openreview.net/forum?id=OyTIV57Prb}
+}
+```
 ## Update
 We will continue to update this repository on GitHub.
 
