@@ -8,7 +8,7 @@ def cut_sent(para):
     para = re.sub('(\.{6})([^”’])', r"\1\n\2", para)  # 英文省略号
     para = re.sub('(\…{2})([^”’])', r"\1\n\2", para)  # 中文省略号
     para = re.sub('([。！？\?][”’])([^，。！？\?])', r'\1\n\2', para)
-    para = para.rstrip()  # 段尾如果有多余的\n就去掉它
+    para = para.rstrip()  # 去掉段尾多余的\n
     return para.split("\n")
 import re
 for i in range(len(files)):
