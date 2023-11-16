@@ -154,10 +154,10 @@ Figure 1: Summarization of GPT-4 and TCSI-pp-zh.
 If you use the data or code of this project, or if our work is helpful to you, please state the citation
 ```
 @inproceedings{
-anonymous2023capp,
-title={{CAPP}-130 : A Dataset of Chinese Application Privacy Policy Summarization and Interpretations.},
-author={Anonymous},
-booktitle={Advances in Neural Information Processing Systems},
+zhu2023capp,
+title={{CAPP}-130: A Corpus of Chinese Application Privacy Policy Summarization and Interpretation},
+author={Pengyun Zhu and Long Wen and Jinfei Liu and Feng Xue and Jian Lou and Zhibo Wang and Kui Ren},
+booktitle={Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
 year={2023},
 url={https://openreview.net/forum?id=OyTIV57Prb}
 }
