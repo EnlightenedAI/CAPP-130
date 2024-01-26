@@ -23,7 +23,7 @@ CAPP-130 contains $130$ Chinese privacy policies from popular applications that 
 
 ###  Basic Statistics of Corpus CAPP-130
 
-The guide for [Paper](Documents) and Annotation Guidelines ([Chinese version](Documents/Annotation_Guidelines_Chinese_Version.pdf), [English version](Documents/Annotation_Guidelines_English_Version.pdf)) explains the tags and the process of annotation, which can be found in the Documents. 
+The guide for [Paper](https://openreview.net/forum?id=OyTIV57Prb) and Annotation Guidelines ([Chinese version](Documents/Annotation_Guidelines_Chinese_Version.pdf), [English version](Documents/Annotation_Guidelines_English_Version.pdf)) explains the tags and the process of annotation, which can be found in the Documents. 
 Currently, the Annotation Guidelines are available only in Chinese, but we are working on translating them into English.
 Table 1 shows the basic statistical information of CAPP-130, and Table 2 shows the pre-sliced data information used for TCSI-pp. They are stored in the CAPP-130 Corpus.
 
