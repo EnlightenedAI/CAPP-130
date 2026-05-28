@@ -1,158 +1,169 @@
-# CAPP-130: A Corpus of Chinese Application Privacy Policy Summarization and Interpretation.
+# CAPP-130: A Corpus of Chinese Application Privacy Policy Summarization and Interpretation
 
-## Introduction
-A privacy policy serves as an online internet protocol crafted by service providers, which details how service providers collect, process, store, manage, and use personal information when users engage with applications.
-However, these privacy policies are often filled with technobabble and legalese, making them 'incomprehensible'.
-As a result, users often agree to all terms unknowingly, even some terms may conflict with the law, thereby posing a considerable risk to personal privacy information.
-To tackle these challenges, we introduce a fine-grained CAPP-130 corpus and a TCSI-pp framework. 
-CAPP-130 contains $130$ Chinese privacy policies from popular applications that have been carefully annotated and interpreted by legal experts, resulting in $52,489$ annotations and $20,555$ rewritten sentences.
-TCSI-pp first extracts sentences related to the topic specified by users and then uses a generative model to rewrite the sentences into comprehensible summarization. Built upon TSCI-pp, we construct a summarization tool TSCI-pp-zh by selecting RoBERTa from six classification models for sentence extraction and selecting mT5 from five generative models for sentence rewriting.
+<div align="center">
 
-## Environment
+[![Paper - NeurIPS 2023](https://img.shields.io/badge/Paper-NeurIPS_2023-blue)](https://proceedings.neurips.cc/paper_files/paper/2023/file/92225ec7e87b97a9e007ca6ab7944b14-Paper-Datasets_and_Benchmarks.pdf)
+[![Code License](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](LICENSE)
+[![Data License](https://img.shields.io/badge/Data%20License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-Project dependencies can be installed in the following ways:
+</div>
 
-```
+## 📖 Introduction
+
+A privacy policy serves as an online agreement crafted by service providers, detailing how they collect, process, store, manage, and use personal information when users engage with applications. However, these policies are often filled with technobabble and legalese, making them virtually incomprehensible to the general public. As a result, users frequently consent to terms unknowingly—some of which may even conflict with legal regulations—posing a considerable risk to personal privacy.
+
+To tackle these challenges, we introduce **CAPP-130**, a fine-grained corpus, and **TCSI-pp**, a novel summarization framework:
+* **CAPP-130** contains **130** Chinese privacy policies from popular applications that have been carefully annotated and interpreted by legal experts, resulting in **52,489** annotations and **20,555** rewritten sentences.
+* **TCSI-pp** first extracts sentences related to the topics specified by users, and then utilizes a generative model to rewrite them into a comprehensible summary. 
+* Built upon this framework, we constructed **TCSI-pp-zh**, a summarization tool utilizing RoBERTa (selected from six classification models) for sentence extraction and mT5 (selected from five generative models) for sentence rewriting.
+
+---
+
+## ⚙️ Environment & Requirements
+
+Install the project dependencies via pip:
+
+```bash
 pip install -r requirements.txt
+
 ```
-Equipment: A100 *2
 
-## Chinese Application Privacy Policy Corpus (CAPP-130)
+> **Hardware Recommendation:** 2 × NVIDIA A100 GPUs
 
-CAPP-130 contains $130$ Chinese privacy policies from popular applications that have been carefully annotated and interpreted by legal experts, resulting in $52,489$ annotations and $19,570$ rewritten sentences.
+---
 
-###  Basic Statistics of Corpus CAPP-130
+## 📚 Chinese Application Privacy Policy Corpus (CAPP-130)
 
-The guide for [Paper](https://openreview.net/forum?id=OyTIV57Prb) and Annotation Guidelines ([Chinese version](Documents/Annotation_Guidelines_Chinese_Version.pdf), [English version](Documents/Annotation_Guidelines_English_Version.pdf)) explains the tags and the process of annotation, which can be found in the Documents. 
-Currently, the Annotation Guidelines are available only in Chinese, but we are working on translating them into English.
-Table 1 shows the basic statistical information of CAPP-130, and Table 2 shows the pre-sliced data information used for TCSI-pp. They are stored in the CAPP-130 Corpus.
+CAPP-130 contains 130 carefully annotated Chinese privacy policies, producing 52,489 annotations and 19,570 rewritten sentences.
 
-Table 1: Basic Statistics of Corpus CAPP-130.
-| Data Practice Categories     | Quantity | Percentage (\%) | Median  | Mea |
-|------------------------------|----------|-----------------|---------|----|
-| Information Collection       | 6967     | 17.9            | 58      | 70 |
-| Permission Acquisition       | 1852     | 4.8             | 54      | 62 |
-| Sharing and Disclosure       | 4740     | 12.2            | 52      | 63 |
-| Usage                        | 3589     | 9.2             | 64      | 75 |
-| Storage                      | 1360     | 3.5             | 41      | 46 |
-| Security Measures            | 3000     | 7.7             | 53      | 60 |
-| Special Audiences            | 1416     | 3.6             | 54      | 60 |
-| Management                   | 5324     | 13.7            | 43      | 49 |
-| Contact Information          | 712      | 1.8             | 41      | 54 |
-| Authorization and Revisions  | 1049     | 2.7             | 35      | 43 |
-| Cessation of Operations      | 110      | 0.3             | 64      | 68 |
-| Important                    | 20555    | 52.8            | 52      | 61 |
-| Risks                        | 1815     | 4.7             | 40      | 46 |
+### Basic Statistics
 
+For detailed annotation guidelines and tags, please refer to our [NeurIPS Paper](https://www.google.com/search?q=https://openreview.net/forum%3Fid%3DOyTIV57Prb) and the Annotation Guidelines ([Chinese Version](https://www.google.com/search?q=Documents/Annotation_Guidelines_Chinese_Version.pdf), [English Version](https://www.google.com/search?q=Documents/Annotation_Guidelines_English_Version.pdf)). *Note: The full English translation of the guidelines is actively being worked on.*
 
-Table 2: The pre-sliced data from CAPP-130 is used to train TCSI-pp.
-| sub dataset                       | train samples | validation samples | test samples |
-|----------------------------------|---------------|--------------------|--------------|
-| important_identification_dataset | 27222         | 5833               | 5834         |
-| risk_identification_dataset      | 14338         | 3083               | 3084         |
-| topic_identification_dataset     | 14190         | 3043               | 3035         |
-| rewritten_sentences              | 15656         | 1957               | 1957         |
+**Table 1: Basic Statistics of Corpus CAPP-130**
 
+| Data Practice Categories | Quantity | Percentage (%) | Median | Mean |
+| --- | --- | --- | --- | --- |
+| Information Collection | 6,967 | 17.9 | 58 | 70 |
+| Permission Acquisition | 1,852 | 4.8 | 54 | 62 |
+| Sharing and Disclosure | 4,740 | 12.2 | 52 | 63 |
+| Usage | 3,589 | 9.2 | 64 | 75 |
+| Storage | 1,360 | 3.5 | 41 | 46 |
+| Security Measures | 3,000 | 7.7 | 53 | 60 |
+| Special Audiences | 1,416 | 3.6 | 54 | 60 |
+| Management | 5,324 | 13.7 | 43 | 49 |
+| Contact Information | 712 | 1.8 | 41 | 54 |
+| Authorization and Revisions | 1,049 | 2.7 | 35 | 43 |
+| Cessation of Operations | 110 | 0.3 | 64 | 68 |
+| Important | 20,555 | 52.8 | 52 | 61 |
+| Risks | 1,815 | 4.7 | 40 | 46 |
 
-## Topic-Controlled Framework for Summarization and Interpretation of Privacy Policy (TCSI-pp)
+**Table 2: Pre-sliced Data Used to Train TCSI-pp**
 
-we provide a Topic-Controlled Framework for Summarization and Interpretation of Privacy Policy (TCSI-pp). Unlike previous methods that only extract specific sentences, TCSI-pp first retrieves relevant sentences based on the topics chosen from data practice categories by users using a classification model. Then, a generative model is used to rewrite these sentences clearly and concisely for the understanding of the general public, with potentially risky sentences emphasized.
+| Sub-dataset | Train Samples | Validation Samples | Test Samples |
+| --- | --- | --- | --- |
+| `important_identification_dataset` | 27,222 | 5,833 | 5,834 |
+| `risk_identification_dataset` | 14,338 | 3,083 | 3,084 |
+| `topic_identification_dataset` | 14,190 | 3,043 | 3,035 |
+| `rewritten_sentences` | 15,656 | 1,957 | 1,957 |
 
-### Information Extraction
+---
 
-These are specifically utilized for binary classification models such as "Important Identification" and "Risk Identification", as well as multi-classification models like "Topic Identification".
+## 🛠️ Topic-Controlled Framework (TCSI-pp)
 
-#### How to use
+Unlike previous methods that merely extract specific sentences, **TCSI-pp** retrieves relevant sentences based on user-selected data practice topics using a classification model. Subsequently, a generative model rewrites these sentences clearly and concisely for the general public, specifically emphasizing potentially risky sentences.
 
+### 1. Information Extraction
 
-The model is placed in the XXX_pretain (where XXX is the model name) directory and each directory contains three files:
- - pytorch_model.bin  
- - bert_config.json  
- - vocab.txt  
+These modules are utilized for binary classification ("Important Identification", "Risk Identification") and multi-class classification ("Topic Identification").
 
-Pre-trained model download address from [here](https://github.com/huggingface).   
+**Model Preparation:**
+Place the pre-trained model downloaded from [Hugging Face](https://huggingface.co/) into the `[MODEL_NAME]_pretrain` directory. Ensure it contains the following files:
 
-After decompression, put it in the corresponding directory according to the above, and confirm the file name is correct. 
+* `pytorch_model.bin`
+* `bert_config.json`
+* `vocab.txt`
 
-We have independently acquired three sets of classification benchmarks from six different models: RoBERTa, BERT, mBERT, sBERT, Pert, and ERNIE. 
+**Training & Inference:**
 
-You can be used in the following ways:
-```
+```bash
 # Train and test binary classification model:
-python run.py --model 'model_name' --data 'data_name'
+python run.py --model [MODEL_NAME] --data [DATA_NAME]
 
 # Train and test multi-classification model:
-python run_multi.py --model 'model_name' --data 'data_name'
-```
-Please note that the above code examples are for illustrative purposes only and you may need to make appropriate adjustments based on your specific situation.
+python run_multi.py --model [MODEL_NAME] --data [DATA_NAME]
 
-#### Baselines
-
-We provide classification baselines for "Important Identification", "Risk Identification", and "Topic Identification". They are respectively trained and tested on the 'important_identification_dataset', 'risk_identification_dataset', and 'topics_identification_dataset' in the sub-dataset. Table 3 displays the evaluation metrics of six models.
-
-Table 3: Evaluation Metrics with F1 for Classification Models.
-| Methods          | topic-Micro | topic-Macro  | important-Micro | important-Macro  |risk-Micro | risk-Macro  |
-|------------------|------------|----------|----------|------|------|------|
-| RoBERTa |**0.819**|**0.841**|**0.897**|**0.899**|0.920	| 0.711|
-|Bert	|0.802	 |0.820	|0.895    |0.896    |0.921	|0.719|
-|mBERT	|0.809	 |0.821   |0.889    |0.889    |0.918 	|0.709 |
-|SBERT	|0.781  |0.794 	| 0.875    |0.874    |0.917	|0.689|
-|PERT	|0.801	 |0.812	| 0.895    |0.897    |**0.922**	|**0.716**|
-|ERNIE	|0.807	 |0.821	| 0.895    |0.896    |0.921	| 0.702|
-
-**(New)** We will upload all model parameters to [here](https://huggingface.co/EnlightenedAI/TCSI_pp_zh/tree/main).
-
-### Rewritten Sentences
-A generative model is used to rewrite these sentences clearly and concisely for the understanding of the general public, with potentially risky sentences emphasized.
-
-#### How to use
-For rewriting sentences, we fine-tuned the following models based on the transformer encoder-decoder architecture: mT5, Bert2Bert, Bert2gpt, RoBerta2gpt, and ERNIE2gpt. These models were initialized with parameters from publicly available models, such as mT5-small, Bert-base-Chinese, ernie-3.0-base-zh, chinese-roberta-wwm-ext, and gpt2-base-chinese. These models can be found on [Hugging Face](https://huggingface.co/) model repository.
-
-You can be used in the following ways:
-```
-# train and test:
-python model_name.py
-#The model_name needs to be changed to mT5, Bert2Bert, Bert2gpt, RoBerta2gpt, or ERNIE2gpt.
-```
-Please note that the above code examples are for illustrative purposes only and you may need to make appropriate adjustments based on your specific situation.
-
-#### Baselines
-Table 4 displays the ROUGE, Bert-score, Bart-score, and Carburacy evaluation metrics for these models:
-
-Table 4: Evaluation metrics for the rewrite models.
-| Methods      | rouge-1 | rouge-2 | rouge-l  | Bert-score | Bart-score | Carburacy |
-|--------------|-------|-------|----------|----------|------------|-----------|
-| mT5         | **0.753** | **0.609** | **0.733**    | **0.888**    | **-4.577**     | **0.833**     |
-| RoBERTa2gpt  | 0.749	|0.577	| 0.719    | 0.872    | -4.975     | 0.755     |
-| Bert2bert    | 0.718	|0.535	| 0.689    | 0.864    | -5.020     | 0.747     |
-| Bert2gpt     | 0.751	|0.574	| 0.720    | 0.872    | -4.964     | 0.764     |
-| ERNIE2gpt    | 0.623	|0.406	| 0.581    | 0.809    | -5.716     | 0.715     |
-
-**(New)** We will upload all model parameters to [here](https://huggingface.co/EnlightenedAI/TCSI_pp_zh/tree/main).
-
-## Chinese application privacy policy summary tool (TCSI-pp-zh)
-
-we select the most effective RoBERTa and mT5 to implement the Chinese application privacy policy summary tool (TCSI-pp-zh). Experiments on real privacy policies show that TCSI-pp-zh is superior over GPT-4 and other models, demonstrating higher readability and reliability in the task of summarizing Chinese application privacy policies.
-
-### How to use
-
-You can be used in the following ways:
-```
-# train and test:
-python ./TCSI_pp_zh/TCSI_pp_zh.py --binary_model 'binary_model_name' --multi_model 'multi_model_name'  --rewrite_model 'rewrite_model_name' --topic_list 'choose_a_topic_list'  --data 'a_privacy_policy'
 ```
 
-Please note that the above code examples are for illustrative purposes only and you may need to make appropriate adjustments based on your specific situation.
+**Classification Baselines:**
+We acquired benchmarks from six different models (RoBERTa, BERT, mBERT, SBERT, PERT, ERNIE).
 
-### Effect Demonstration
-Figure 1 displays the summarization of GPT-4 and TCSI-pp-zh in a privacy policy, where text having the same background color represents descriptions of the same part of the privacy policy generated by different algorithms; red text emphasizes incorrect content produced in the summary.
+*Table 3: Evaluation Metrics (F1-score) for Classification Models*
 
-Figure 1: Summarization of GPT-4 and TCSI-pp-zh.
-![TCSI-pp-zh.png](images/TCSI_pp_zh.png)
+| Methods | Topic (Micro) | Topic (Macro) | Important (Micro) | Important (Macro) | Risk (Micro) | Risk (Macro) |
+| --- | --- | --- | --- | --- | --- | --- |
+| RoBERTa | **0.819** | **0.841** | **0.897** | **0.899** | 0.920 | 0.711 |
+| BERT | 0.802 | 0.820 | 0.895 | 0.896 | 0.921 | 0.719 |
+| mBERT | 0.809 | 0.821 | 0.889 | 0.889 | 0.918 | 0.709 |
+| SBERT | 0.781 | 0.794 | 0.875 | 0.874 | 0.917 | 0.689 |
+| PERT | 0.801 | 0.812 | 0.895 | 0.897 | **0.922** | **0.716** |
+| ERNIE | 0.807 | 0.821 | 0.895 | 0.896 | 0.921 | 0.702 |
 
-## citation
-If you use the data or code of this project, or if our work is helpful to you, please state the citation
+> ✨ **New:** All model parameters will be hosted [here](https://www.google.com/search?q=https://huggingface.co/EnlightenedAI/TCSI_pp_zh/tree/main).
+
+### 2. Sentence Rewriting
+
+We fine-tuned mT5, BERT2BERT, BERT2GPT, RoBERTa2GPT, and ERNIE2GPT to rewrite the extracted text into user-friendly summaries.
+
+**Training & Inference:**
+
+```bash
+python [MODEL_NAME].py
+
 ```
+
+*(Replace `[MODEL_NAME]` with `mT5`, `Bert2Bert`, `Bert2gpt`, `RoBerta2gpt`, or `ERNIE2gpt`)*
+
+**Rewriting Baselines:**
+
+*Table 4: Evaluation metrics for the rewriting models*
+
+| Methods | ROUGE-1 | ROUGE-2 | ROUGE-L | BERTScore | BARTScore | Carburacy |
+| --- | --- | --- | --- | --- | --- | --- |
+| mT5 | **0.753** | **0.609** | **0.733** | **0.888** | **-4.577** | **0.833** |
+| RoBERTa2GPT | 0.749 | 0.577 | 0.719 | 0.872 | -4.975 | 0.755 |
+| BERT2BERT | 0.718 | 0.535 | 0.689 | 0.864 | -5.020 | 0.747 |
+| BERT2GPT | 0.751 | 0.574 | 0.720 | 0.872 | -4.964 | 0.764 |
+| ERNIE2GPT | 0.623 | 0.406 | 0.581 | 0.809 | -5.716 | 0.715 |
+
+---
+
+## 🚀 Summarization Tool (TCSI-pp-zh)
+
+By combining the most effective models (RoBERTa and mT5), we implemented **TCSI-pp-zh**. Experiments on real-world policies demonstrate that TCSI-pp-zh outperforms GPT-4 and other general models, exhibiting higher readability and reliability.
+
+**Run the Tool:**
+
+```bash
+python ./TCSI_pp_zh/TCSI_pp_zh.py \
+  --binary_model [BINARY_MODEL_NAME] \
+  --multi_model [MULTI_MODEL_NAME] \
+  --rewrite_model [REWRITE_MODEL_NAME] \
+  --topic_list [TOPIC_LIST] \
+  --data [PRIVACY_POLICY_PATH]
+
+```
+
+**Demonstration:**
+The figure below compares the summarizations generated by GPT-4 and TCSI-pp-zh. Matching background colors represent descriptions of the same policy clauses, while **red text** emphasizes inaccurate content produced in the summary.
+
+---
+
+## 📜 Citation
+
+If you use the data or code from this project, or find our work helpful, please cite our NeurIPS 2023 paper:
+
+```bibtex
 @inproceedings{zhu2023capp,
   title={CAPP-130: a corpus of chinese application privacy policy summarization and interpretation},
   author={Zhu, Pengyun and Wen, Long and Liu, Jinfei and Xue, Feng and Lou, Jian and Wang, Zhibo and Ren, Kui},
@@ -160,7 +171,12 @@ If you use the data or code of this project, or if our work is helpful to you, p
   pages={46773--46785},
   year={2023}
 }
-```
-## Update
-We will continue to update this repository on GitHub.
 
+```
+---
+
+## 📌 Update
+
+We will continue to actively maintain and update this repository on GitHub.
+
+```
